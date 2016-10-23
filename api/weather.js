@@ -4,7 +4,7 @@ let router = Router();
 
 router.get('/', function(req, res) {
     let response = {
-        "text": "Next bus in 3 minutes",
+        "text": "Now: 34 degrees and raining",
         "attachments": [
             {
                 "text":"Dummy GET response. Only you can see this"
@@ -17,13 +17,15 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
     let response = {
         "response_type": "in_channel",
-        "text": "Fastest way to city center: bus in 3 minutes",
+        "text": "Now: 34 degrees and raining",
         "attachments": [
             {
-                "text":"Dummy POST response. Btw, I told everyone"
+                "text":"Dummy POST response. Everyone can see me now! :wave:"
             }
         ]
     };
+    res.send(response);
 });
+
 
 module.exports = router;

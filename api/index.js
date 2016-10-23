@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import yr from './yr';
-import ruter from './ruter';
+import weather from './weather';
+import transport from './transport';
 
 export default function() {
     let api = Router();
 
-    api.use('/weather', yr);
-    api.use('/transport', ruter);
+    api.use('/weather', weather);
+    api.use('/transport', transport);
 
     // perhaps expose some API metadata at the root
     api.get('/', (req, res) => {
