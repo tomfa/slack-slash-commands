@@ -1,6 +1,9 @@
 const VALID_TOKENS = process.env.SLACK_API_KEY.split(';');
 
 export const slackAuth = (req, res, next) => {
+    if (!VALID_TOKENS) {
+        return next();
+    }
     let requestToken;
     switch (req.method){
         case 'GET':
@@ -9,6 +12,8 @@ export const slackAuth = (req, res, next) => {
         case 'POST':
             requestToken = req.body.token;
             break;
+        default:
+            return res.status(405).send('Method not allowed');
     }
     if (!requestToken) {
         return res.status(400).send('Missing token in request');
