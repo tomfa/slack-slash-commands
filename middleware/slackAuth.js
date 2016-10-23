@@ -1,4 +1,4 @@
-const VALID_TOKENS = process.env.SLACK_API_KEY.split(';');
+const VALID_TOKENS = process.env.SLACK_API_KEY && process.env.SLACK_API_KEY.split(';');
 
 export const slackAuth = (req, res, next) => {
     if (!VALID_TOKENS) {

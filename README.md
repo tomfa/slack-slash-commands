@@ -12,3 +12,5 @@ A simple dummy-server for using Slack slash commands against
 5. Change ```icon```, ```name```, ```command```, ```autocomplete help text``` as you see fit
 6. Note down the ```Token``` for the Slash command. Add it to the environment variable ```SLACK_API_KEY``` on the server. *On heroku, this can be done on [Heroku dashboard](https://dashboard.heroku.com/), under ```your app``` > ```Settings``` > ```Config Variables```*
 7. Save your Slash command and test it in your slack channel by typing ```/your-command```
+
+If you need to accept multiple tokens (i.e. have multiple slash commands), separate them with ```;``` in the environment variable ```SLACK_API_KEY```
