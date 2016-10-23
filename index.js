@@ -4,15 +4,15 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 
 import * as config from './config'; // get our config file
-import middleware from './middleware';
 import api from './api';
 
 
 var app = express();
-app.server = http.createServer(app);
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
-var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
+app.server = http.createServer(app);
 
 app.use('/', api());
 
@@ -27,15 +27,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-// 3rd party middleware
-app.use(cors({
-    exposedHeaders: ['Link']
-}));
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json());
 
 app.server.listen(process.env.PORT || 8080);
 
