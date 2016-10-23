@@ -10,7 +10,6 @@ export const slackAuth = (req, res, next) => {
             requestToken = req.body.token;
             break;
     }
-
     if (!requestToken) {
         return res.status(400).send('Missing token in request');
     }
@@ -18,5 +17,12 @@ export const slackAuth = (req, res, next) => {
         return res.status(401).send('Invalid token');
     }
 
+    next();
+}
+
+export const sslCheckResponse = (req, res, next) => {
+    if (req.query && req.query.ssl_check && req.query.ssl_check == 1) {
+        return res.status(200).send();
+    }
     next();
 }
