@@ -1,5 +1,5 @@
 {
-  "name": "Simple node server for Slack testing",
+  "name": "Simple Slack slash cmd",
   "description": "A simple Node.js app demonstrating Slack slash commands",
   "repository": "https://github.com/tomfa/slack-slash-commands",
   "logo": "https://node-js-sample.herokuapp.com/node.png",
